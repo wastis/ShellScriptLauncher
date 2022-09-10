@@ -36,11 +36,11 @@
 		<!-- background -->
 		<control type="image" id="2001">
 			<visible>true</visible>
-			<left>0</left>
-			<top>0</top>
-			<width>800</width>
-			<height>800</height>
-			<texture colordiffuse="FF242728">colimg/white.png</texture>
+			<left>-65</left>
+			<top>-10</top>
+			<width>930</width>
+			<height>820</height>
+			<texture border="65,10,65,10" colordiffuse="context_color">dialogs/context/middle.png</texture>
 		</control>
 		<!-- list control -->
 		<control type="list" id="2000">
@@ -62,6 +62,7 @@
 					<top>0</top>
 					<width>800</width>
 					<height>80</height>
+					<texture background="true">$VAR[SelectDialogIcon]</texture>
 					<visible>false</visible>
 				</control>
 				<control type="label">
@@ -69,7 +70,8 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>panel_textcolor</textcolor>
+					<font>Reg24</font>
 					<aligny>center</aligny>
 					<align>center</align>
 					<label>$INFO[ListItem.Label]</label>
@@ -82,7 +84,7 @@
 					<top>0</top>
 					<width>800</width>
 					<height>80</height>
-					<texture colordiffuse="FF607D8B">colimg/white.png</texture>
+					<texture colordiffuse="panel_focus">common/white.jpg</texture>
 					<visible>Control.HasFocus(2000)</visible>
 				</control>
 				<!-- focus - selected -->
@@ -91,9 +93,10 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>panel_textcolor</textcolor>
 					<aligny>center</aligny>
 					<align>center</align>
+					<font>Reg24</font>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 			</focusedlayout>

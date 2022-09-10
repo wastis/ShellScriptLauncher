@@ -31,6 +31,11 @@ class MenuGui(  xbmcgui.WindowXMLDialog  ):
 		self.item_list = self.getControl(2000)
 		self.item_list_bk = self.getControl(2001)
 
+		dx = -self.item_list_bk.getX()
+		dy = -self.item_list_bk.getY()
+
+		log("size :" + str(dx))
+
 		item_height = 80
 		item_cnt = len(self.menu)
 
@@ -46,15 +51,15 @@ class MenuGui(  xbmcgui.WindowXMLDialog  ):
 		log(str(y))
 
 		self.item_list.setHeight(window_height)
-		self.item_list_bk.setHeight(window_height)
+		self.item_list_bk.setHeight(window_height+2*dy)
 
 		x = int((1920 - width)/2)
 
 		self.item_list.setWidth(width)
-		self.item_list_bk.setWidth(width)
+		self.item_list_bk.setWidth(width+2*dx)
 
 		self.item_list.setPosition(x,y)
-		self.item_list_bk.setPosition(x,y)
+		self.item_list_bk.setPosition(x-dx,y-dy)
 
 		for menuitem in self.menu:
 			item = ListItem(menuitem[0], "")

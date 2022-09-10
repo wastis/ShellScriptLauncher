@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <window>
 	<defaultcontrol always="true">2000</defaultcontrol>
-	<animation effect="fade" time="200">WindowOpen</animation>
-	<animation effect="fade" time="200">WindowClose</animation>
+	<animation effect="slide" start="1925,0" end="0,0" time="400" tween="quadratic" easing="out">WindowOpen</animation>
+	<animation effect="slide" start="0,0" end="-1925,0" time="400" tween="quadratic" easing="out">WindowClose</animation>
 	<coordinates>
 		<left>0</left>
 		<top>0</top>
@@ -40,7 +40,7 @@
 			<top>0</top>
 			<width>800</width>
 			<height>800</height>
-			<texture colordiffuse="FF242728">colimg/white.png</texture>
+			<texture background="true" colordiffuse="$INFO[Skin.String(color.tertiary)]">backgrounds/white.png</texture>
 		</control>
 		<!-- list control -->
 		<control type="list" id="2000">
@@ -69,7 +69,8 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>$INFO[Skin.String(color.text)]</textcolor>
+					<font>button</font>
 					<aligny>center</aligny>
 					<align>center</align>
 					<label>$INFO[ListItem.Label]</label>
@@ -82,7 +83,7 @@
 					<top>0</top>
 					<width>800</width>
 					<height>80</height>
-					<texture colordiffuse="FF607D8B">colimg/white.png</texture>
+					<texture colordiffuse="$INFO[Skin.String(color.500)]">backgrounds/white.png</texture>
 					<visible>Control.HasFocus(2000)</visible>
 				</control>
 				<!-- focus - selected -->
@@ -91,9 +92,10 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>white</textcolor>
 					<aligny>center</aligny>
 					<align>center</align>
+					<font>button</font>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 			</focusedlayout>

@@ -1,8 +1,6 @@
 <?xml version="1.0" ?>
 <window>
 	<defaultcontrol always="true">2000</defaultcontrol>
-	<animation effect="fade" time="200">WindowOpen</animation>
-	<animation effect="fade" time="200">WindowClose</animation>
 	<coordinates>
 		<left>0</left>
 		<top>0</top>
@@ -36,11 +34,11 @@
 		<!-- background -->
 		<control type="image" id="2001">
 			<visible>true</visible>
-			<left>0</left>
-			<top>0</top>
-			<width>800</width>
-			<height>800</height>
-			<texture colordiffuse="FF242728">colimg/white.png</texture>
+			<left>-14</left>
+			<top>-14</top>
+			<width>828</width>
+			<height>828</height>
+			<texture border="14">button-menu-background.png</texture>
 		</control>
 		<!-- list control -->
 		<control type="list" id="2000">
@@ -62,14 +60,16 @@
 					<top>0</top>
 					<width>800</width>
 					<height>80</height>
-					<visible>false</visible>
+					<texture border="9">button-default.png</texture>
+					<visible>true</visible>
 				</control>
 				<control type="label">
 					<left>0</left>
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>button-text</textcolor>
+					<font>apptv22</font>
 					<aligny>center</aligny>
 					<align>center</align>
 					<label>$INFO[ListItem.Label]</label>
@@ -82,7 +82,7 @@
 					<top>0</top>
 					<width>800</width>
 					<height>80</height>
-					<texture colordiffuse="FF607D8B">colimg/white.png</texture>
+					<texture border="9">button-default-focus.png</texture>
 					<visible>Control.HasFocus(2000)</visible>
 				</control>
 				<!-- focus - selected -->
@@ -91,9 +91,10 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>button-text</textcolor>
 					<aligny>center</aligny>
 					<align>center</align>
+					<font>apptv22</font>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 			</focusedlayout>

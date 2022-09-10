@@ -1,8 +1,14 @@
 <?xml version="1.0" ?>
 <window>
 	<defaultcontrol always="true">2000</defaultcontrol>
-	<animation effect="fade" time="200">WindowOpen</animation>
-	<animation effect="fade" time="200">WindowClose</animation>
+	<animation type="Windowopen">
+		<effect type="fade" start="0" end="100" time="300"/>
+		<effect type="slide" start="0,-200" end="0" tween="cubic" easing="out" time="400"/>
+	</animation>
+	<animation type="Windowclose">
+		<effect type="fade" start="100" end="0" time="300"/>
+		<effect type="slide" start="0" end="0,300" tween="cubic" easing="out" time="400"/>
+	</animation>
 	<coordinates>
 		<left>0</left>
 		<top>0</top>
@@ -17,7 +23,7 @@
 			<height>3240</height>
 			<animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
 			<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
-			<texture colordiffuse="88888888">colimg/black.png</texture>
+			<texture colordiffuse="e9FFFFFF">colimg/black.png</texture>
 		</control>
 		<!-- big back button -->
 		<control type="button" id="2999">
@@ -40,7 +46,8 @@
 			<top>0</top>
 			<width>800</width>
 			<height>800</height>
-			<texture colordiffuse="FF242728">colimg/white.png</texture>
+			<texture>vignette.png</texture>
+			<colordiffuse>ffffffff</colordiffuse>
 		</control>
 		<!-- list control -->
 		<control type="list" id="2000">
@@ -69,7 +76,8 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>textActive</textcolor>
+					<font>buttonTitle</font>
 					<aligny>center</aligny>
 					<align>center</align>
 					<label>$INFO[ListItem.Label]</label>
@@ -82,7 +90,7 @@
 					<top>0</top>
 					<width>800</width>
 					<height>80</height>
-					<texture colordiffuse="FF607D8B">colimg/white.png</texture>
+					<texture colordiffuse="highlight">colimg/white.png</texture>
 					<visible>Control.HasFocus(2000)</visible>
 				</control>
 				<!-- focus - selected -->
@@ -91,9 +99,10 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>black</textcolor>
 					<aligny>center</aligny>
 					<align>center</align>
+					<font>buttonTitle</font>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 			</focusedlayout>

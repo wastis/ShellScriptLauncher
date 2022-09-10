@@ -1,8 +1,14 @@
 <?xml version="1.0" ?>
 <window>
 	<defaultcontrol always="true">2000</defaultcontrol>
-	<animation effect="fade" time="200">WindowOpen</animation>
-	<animation effect="fade" time="200">WindowClose</animation>
+	<animation type="WindowOpen" reversible="false">
+		<effect type="zoom" start="80" end="100" center="auto" easing="out" tween="back" time="300"/>
+		<effect type="fade" start="0" end="100" time="300"/>
+	</animation>
+	<animation type="WindowClose" reversible="false">
+		<effect type="zoom" start="100" end="80" center="auto" easing="in" tween="back" time="300"/>
+		<effect type="fade" start="100" end="0" time="300"/>
+	</animation>
 	<coordinates>
 		<left>0</left>
 		<top>0</top>
@@ -36,11 +42,12 @@
 		<!-- background -->
 		<control type="image" id="2001">
 			<visible>true</visible>
-			<left>0</left>
-			<top>0</top>
+			<left>-40</left>
+			<top>-60</top>
 			<width>800</width>
 			<height>800</height>
-			<texture colordiffuse="FF242728">colimg/white.png</texture>
+			<texture border="60">frames/Menu_Glass2b.png</texture>
+			<colordiffuse>DialogBackgroundColor</colordiffuse>
 		</control>
 		<!-- list control -->
 		<control type="list" id="2000">
@@ -69,7 +76,8 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>TextNF</textcolor>
+					<font>METF_DialogLarge</font>
 					<aligny>center</aligny>
 					<align>center</align>
 					<label>$INFO[ListItem.Label]</label>
@@ -82,7 +90,7 @@
 					<top>0</top>
 					<width>800</width>
 					<height>80</height>
-					<texture colordiffuse="FF607D8B">colimg/white.png</texture>
+					<texture border="5">keyboard/ButtonFO.png</texture>
 					<visible>Control.HasFocus(2000)</visible>
 				</control>
 				<!-- focus - selected -->
@@ -91,9 +99,10 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>DialogTextFO</textcolor>
 					<aligny>center</aligny>
 					<align>center</align>
+					<font>METF_DialogLarge</font>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 			</focusedlayout>

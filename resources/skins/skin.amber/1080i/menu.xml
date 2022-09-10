@@ -36,11 +36,11 @@
 		<!-- background -->
 		<control type="image" id="2001">
 			<visible>true</visible>
-			<left>0</left>
-			<top>0</top>
-			<width>800</width>
-			<height>800</height>
-			<texture colordiffuse="FF242728">colimg/white.png</texture>
+			<left>-45</left>
+			<top>-45</top>
+			<width>890</width>
+			<height>890</height>
+			<texture border="45">dialogs/TinyDialog.png</texture>
 		</control>
 		<!-- list control -->
 		<control type="list" id="2000">
@@ -62,14 +62,15 @@
 					<top>0</top>
 					<width>800</width>
 					<height>80</height>
-					<visible>false</visible>
+					<texture border="3">list/ListNF.png</texture>
+					<visible>true</visible>
 				</control>
 				<control type="label">
 					<left>0</left>
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>$VAR[LabelTextColor]</textcolor>
 					<aligny>center</aligny>
 					<align>center</align>
 					<label>$INFO[ListItem.Label]</label>
@@ -82,7 +83,7 @@
 					<top>0</top>
 					<width>800</width>
 					<height>80</height>
-					<texture colordiffuse="FF607D8B">colimg/white.png</texture>
+					<texture border="4" colordiffuse="$VAR[HighlightColor]">img/WhiteRoundedST2.png</texture>
 					<visible>Control.HasFocus(2000)</visible>
 				</control>
 				<!-- focus - selected -->
@@ -91,7 +92,7 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>$VAR[FocusedTextColor]</textcolor>
 					<aligny>center</aligny>
 					<align>center</align>
 					<label>$INFO[ListItem.Label]</label>

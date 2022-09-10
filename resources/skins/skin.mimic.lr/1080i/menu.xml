@@ -36,11 +36,12 @@
 		<!-- background -->
 		<control type="image" id="2001">
 			<visible>true</visible>
-			<left>0</left>
-			<top>0</top>
-			<width>800</width>
-			<height>800</height>
-			<texture colordiffuse="FF242728">colimg/white.png</texture>
+			<left>-16</left>
+			<top>-16</top>
+			<width>832</width>
+			<height>832</height>
+			<texture border="16">dialog_context.png</texture>
+			<colordiffuse>dialog</colordiffuse>
 		</control>
 		<!-- list control -->
 		<control type="list" id="2000">
@@ -69,7 +70,6 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
 					<aligny>center</aligny>
 					<align>center</align>
 					<label>$INFO[ListItem.Label]</label>
@@ -82,7 +82,8 @@
 					<top>0</top>
 					<width>800</width>
 					<height>80</height>
-					<texture colordiffuse="FF607D8B">colimg/white.png</texture>
+					<texture border="5">listselect_fo.png</texture>
+					<colordiffuse>FocusColor</colordiffuse>
 					<visible>Control.HasFocus(2000)</visible>
 				</control>
 				<!-- focus - selected -->
@@ -91,7 +92,6 @@
 					<top>3</top>
 					<width>800</width>
 					<height>80</height>
-					<textcolor>FFFFFFFF</textcolor>
 					<aligny>center</aligny>
 					<align>center</align>
 					<label>$INFO[ListItem.Label]</label>
