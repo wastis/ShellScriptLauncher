@@ -1,0 +1,3 @@
+backup addon data	:blocking	:	/bin/tar -czf ~/kodi_addon_data.tgz ~/.kodi/userdata/addon_data
+backup keymaps		:			:	/bin/tar -czf ~/kodi_keymaps.tgz ~/.kodi/userdata/keymaps
+backup userdata		:			:	/bin/tar -czf ~/kodi_userdata.tgz ~/.kodi/userdata

@@ -1,0 +1,17 @@
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_de\n"
+
+
+
+msgctxt "#32005"
+msgid "General"
+msgstr "Allgemein"
+
+msgctxt "#32006"
+msgid "menu file"
+msgstr "Menüdatei"
+

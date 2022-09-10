@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="32005">
+        <setting label="32006" type="file" id="menufile" default="~/.kodi/addons/script.shellscript.launcher/example.menu"/>
+    </category>
+</settings>

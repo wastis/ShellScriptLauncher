@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">2000</defaultcontrol>
+	<animation effect="fade" time="200">WindowOpen</animation>
+	<animation effect="fade" time="200">WindowClose</animation>
+	<coordinates>
+		<left>0</left>
+		<top>0</top>
+		<origin x="0" y="0">Window.IsActive(Home)</origin>
+	</coordinates>
+	<controls>
+		<!-- fade image -->
+		<control type="image">
+			<left>-1920</left>
+			<top>-1080</top>
+			<width>5760</width>
+			<height>3240</height>
+			<animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+			<texture colordiffuse="88888888">colors/black.png</texture>
+		</control>
+
+		<!-- big back button -->
+		<control type="button" id="2999">
+			<left>-1920</left>
+			<top>-1080</top>
+			<width>5760</width>
+			<height>3240</height>
+			<texturefocus />
+			<texturenofocus />
+			<onclick>Action(back)</onclick>
+			<onup>2000</onup>
+			<ondown>2000</ondown>
+			<onleft>2000</onleft>
+			<onright>2000</onright>
+		</control>
+		
+		<!-- background -->
+		<control type="image" id="2001">
+			<visible>true</visible>
+			<left>0</left>
+			<top>0</top>
+			<width>1200</width>
+			<height>800</height>
+			<texture colordiffuse="FF1A2123">colors/white.png</texture>
+		</control>
+
+		<!-- list control -->
+		<control type="list" id="2000">
+			<description>My first list container</description>
+			<left>0</left>
+			<top>0</top>
+			<width>1200</width>
+			<height>800</height>
+			
+			<onleft></onleft>
+			<onright></onright>
+			
+			<visible>true</visible>
+			<viewtype>biglist</viewtype>
+			<orientation>vertical</orientation>
+			<autoscroll>false</autoscroll>
+			<scrolltime tween="sine" easing="out">200</scrolltime>
+			
+			<!-- not focused -->
+			<itemlayout width="1100" height="80">
+				<control type="label">
+					<visible>!String.IsEqual(ListItem.Label2,"select")</visible>
+					<left>0</left>
+					<top>3</top>
+					<width>1200</width>
+					<height>80</height>
+					<font>font14</font>
+					<aligny>center</aligny>
+					<align>center</align>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+				
+				<control type="label">
+					<visible>String.IsEqual(ListItem.Label2,"select")</visible>
+					<left>0</left>
+					<top>3</top>
+					<width>1200</width>
+					<height>80</height>
+					<aligny>center</aligny>
+					<align>center</align>
+					<font>font14</font>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>FFFF0000</textcolor>
+				</control>
+			</itemlayout>
+
+			<!-- focused -->
+			<focusedlayout width="1100" height="80">
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>1200</width>
+					<height>80</height>
+					<visible>Control.HasFocus(2000)</visible>
+					<texture colordiffuse="FF12A0C7">colors/white.png</texture>
+				</control>
+				
+				<!-- focus - selected -->
+				<control type="label">
+					<visible>Control.HasFocus(2000) + String.IsEqual(ListItem.Label2,"select")</visible>
+					<left>0</left>
+					<top>3</top>
+					<width>1200</width>
+					<height>80</height>
+					<aligny>center</aligny>
+					<align>center</align>
+					<font>font14</font>
+
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>FF00FF00</textcolor>
+				</control>
+
+				<!-- focus - no selected -->
+				<control type="label">
+					<visible>Control.HasFocus(2000) + !String.IsEqual(ListItem.Label2,"select")</visible>
+					<left>0</left>
+					<top>3</top>
+					<width>1200</width>
+					<height>80</height>
+					<aligny>center</aligny>
+					<align>center</align>
+					<font>font14</font>
+
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>FF000000</textcolor>
+				</control>
+
+				<!-- not focus - selected -->
+				<control type="label">
+					<visible>!Control.HasFocus(2000) + String.IsEqual(ListItem.Label2,"select")</visible>
+					<left>0</left>
+					<top>3</top>
+					<width>1200</width>
+					<height>80</height>
+					<font>font14</font>
+					<aligny>center</aligny>
+					<align>center</align>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>FF000000</textcolor>
+				</control>
+				
+				<!-- not focus - not selected -->
+				<control type="label">
+					<visible>!Control.HasFocus(2000) + !String.IsEqual(ListItem.Label2,"select")</visible>
+					<left>0</left>
+					<top>3</top>
+					<width>1200</width>
+					<height>80</height>
+					<font>font14</font>
+					<aligny>center</aligny>
+					<align>center</align>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>FFFFFFFF</textcolor>
+				</control>
+			</focusedlayout>
+		</control>
+
+	</controls>
+</window>
