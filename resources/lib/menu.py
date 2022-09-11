@@ -13,10 +13,6 @@ import xbmcgui
 import xbmcaddon
 from xbmcgui import ListItem
 
-from log import log
-from handle import handle
-from handle import opthandle
-
 addon = xbmcaddon.Addon()
 def tr(lid):
 	return addon.getLocalizedString(lid)
@@ -34,8 +30,6 @@ class MenuGui(  xbmcgui.WindowXMLDialog  ):
 		dx = -self.item_list_bk.getX()
 		dy = -self.item_list_bk.getY()
 
-		log("size :" + str(dx))
-
 		item_height = 80
 		item_cnt = len(self.menu)
 
@@ -47,8 +41,6 @@ class MenuGui(  xbmcgui.WindowXMLDialog  ):
 			window_height = max_height
 
 		y = int((1080 - window_height) / 2)
-
-		log(str(y))
 
 		self.item_list.setHeight(window_height)
 		self.item_list_bk.setHeight(window_height+2*dy)
@@ -72,7 +64,6 @@ class MenuGui(  xbmcgui.WindowXMLDialog  ):
 	#
 
 	def end_gui(self):
-		log("end_gui")
 		self.selected = -1
 		self.close()
 
@@ -87,6 +78,6 @@ class MenuGui(  xbmcgui.WindowXMLDialog  ):
 		if action.getId() in [7, 100]:
 			self.ok_pressed()
 
-		#Cancel
+		#Cancel / Fullscreen
 		if action.getId() in [92,10,18]:
 			self.end_gui()

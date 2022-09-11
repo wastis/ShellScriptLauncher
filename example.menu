@@ -1,3 +1,4 @@
-backup addon data	:blocking	:	/bin/tar -czf ~/kodi_addon_data.tgz ~/.kodi/userdata/addon_data
-backup keymaps		:			:	/bin/tar -czf ~/kodi_keymaps.tgz ~/.kodi/userdata/keymaps
-backup userdata		:			:	/bin/tar -czf ~/kodi_userdata.tgz ~/.kodi/userdata
+Backup addon data:notify:/bin/tar -czf ~/kodi_addon_data.tgz ~/.kodi/userdata/addon_data
+Backup keymaps::/bin/tar -czf ~/kodi_keymaps.tgz ~/.kodi/userdata/keymaps
+Backup userdata	::/bin/tar -czf ~/kodi_userdata.tgz ~/.kodi/userdata
+Ping Server:notify,exitcode 0:ping -c 1 192.168.1.1

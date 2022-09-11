@@ -14,11 +14,33 @@ import subprocess
 
 import xbmcaddon
 import xbmc
+import xbmcgui
 
 from log import log
 from handle import handle
 
 from menu import MenuGui
+
+addon = xbmcaddon.Addon()
+def tr(lid):
+	return addon.getLocalizedString(lid)
+
+def parse_flags(flags):
+	# takes comma seperated string like "notify,exitcode 0"
+
+	notify = False
+	check_exit = False
+	expect = 0
+
+	for flag in flags.split(","):
+		flag = flag.strip()
+		if flag == "notify":
+			notify = True
+		if flag.startswith("exitcode"):
+			expect = int(flag[8:].strip())
+			check_exit = True
+
+	return notify, check_exit, expect
 
 def run_addon():
 	try:
@@ -27,35 +49,55 @@ def run_addon():
 
 		log("menufile: " +  menufile)
 
-		with open(menufile, "r") as f:
-			content = f.read().split("\n")
+		try:
+			with open(menufile, "r") as f:
+				content = f.read().split("\n")
+		except FileNotFoundError:
+			xbmcgui.Dialog().ok(tr(32100),tr(32101))
+			return
+		except IsADirectoryError:
+			xbmcgui.Dialog().ok(tr(32100),tr(32102))
+			return
+		except PermissionError:
+			xbmcgui.Dialog().ok(tr(32100),tr(32103))
+			return
+		except Exception as e:
+			handle(e)
+			xbmcgui.Dialog().ok(tr(32100),tr(32104))
+			return
 
+		# parse menu items
 		menu_items = []
 		for line in content:
 			try:
-				pos = line.find(":")
-				if pos <0 : continue
-				expos = line.find(":",pos + 1)
-
-				name =  line[:pos].strip()
-				block = line[pos + 1:expos].strip() == "blocking"
-				exe = line[expos + 1:].strip()
-
-				if name == "":
+				cols = line.split(":")
+				if len(cols) < 3:
 					continue
-				if exe == "":
+
+				name = cols[0].strip()
+				flags = cols[1].lower()
+				exe = ":".join(cols[2:])
+
+				if name == "" or exe == "":
 					continue
-				menu_items.append((name, block, exe))
+
+				menu_items.append((name, exe, flags))
 
 			except:
 				continue
+		#
+		# check if menu file is empty
+		#
 
 		if not menu_items:
-			log("no menu entries found in menu file")
+			xbmcgui.Dialog().ok(tr(32100),tr(32105))
 			return
 
+		#
+		# show menu dialog
+		#
+
 		current_skin = xbmc.getSkinDir()
-		log(current_skin)
 
 		if os.path.exists(os.path.join(cwd,"resources","skins",current_skin)):
 			skin = current_skin
@@ -65,19 +107,60 @@ def run_addon():
 		ui = MenuGui("menu.xml", cwd, skin, "1080i", menu = menu_items, width = 400)
 		ui.doModal()
 		selected = ui.selected
+
+		#
+		# check if back has been pressed
+		#
+
 		if selected < 0:
 			log("nothing selected")
 			return
 
-		cmd = [os.path.expanduser(item) for item in menu_items[selected][2].split(" ")]
-		block =  menu_items[selected][1]
-		log("run: " + str(block) + " "+ " ".join(cmd))
+		#
+		# expand user home ~
+		#
 
-		if block:
-			os.system(" ".join(cmd))
+		cmd = [\
+				os.path.expanduser(item) \
+				for item in menu_items[selected][1].split(" ")\
+			]
+
+		#
+		# parse flags
+		#
+
+		notify, check_exit, expect = parse_flags(menu_items[selected][2])
+
+		#
+		# execute command
+		#
+
+		log("execute: " + " ".join(cmd))
+
+		try:
+			exitcode =  int(subprocess.Popen(cmd).wait())
+
+		except Exception as e:
+			handle(e)
+			xbmcgui.Dialog().ok(tr(32110),tr(32111) % cmd)
+
 		else:
-			subprocess.Popen(cmd)
-		log("done")
+			log("done with exitcode %s " % str(exitcode))
+
+			if check_exit and exitcode != expect:
+				xbmcgui.Dialog().ok\
+				(\
+					tr(32110), \
+					tr(32113) %  (menu_items[selected][0], exitcode)\
+				)
+
+			elif notify:
+				xbmcgui.Dialog().notification\
+				(
+					tr(32112), \
+					menu_items[selected][0],\
+					os.path.join(cwd,"resources","media","notify.png")\
+				)
 
 	except Exception as e:
 		handle(e)

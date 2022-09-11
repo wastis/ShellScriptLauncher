@@ -15,3 +15,43 @@ msgctxt "#32006"
 msgid "menu file"
 msgstr "Menüdatei"
 
+msgctxt "#32100"
+msgid "Menu File Error"
+msgstr "Menüdatei Fehler"
+
+msgctxt "#32101"
+msgid "Menu file not found. Please select a file in the addon settings. Please visit https://github.com/wastis/ShellScriptLauncher for more information."
+msgstr "Menüdatei wurde nicht gefunden. Bitte wähle Sie eine Menüdatei in den Addon-Einstellungen aus. Besuchen sie auch https://github.com/wastis/ShellScriptLauncher für weitere Informationen."
+
+msgctxt "#32102"
+msgid "Menu file is a directory. Please select a file in the addon settings. Please visit https://github.com/wastis/ShellScriptLauncher for more information."
+msgstr "Menüdatei ist ein Verzeichnis. Bitte wähle Sie eine Menüdatei in den Addon-Einstellungen aus. Besuchen sie auch https://github.com/wastis/ShellScriptLauncher für weitere Informationen."
+
+msgctxt "#32103"
+msgid "Cannot access menu file, permission problem."
+msgstr "Kann nicht auf Menüdatei zugreifen, Berechtigungsprobleme."
+
+msgctxt "#32104"
+msgid "Please see Kodi log for more information."
+msgstr "Bitte sehen Sie die Kodi Logdatei für weitere Informationen ein."
+
+msgctxt "#32105"
+msgid "Menu file is empty or might not have the correct format. Please visit https://github.com/wastis/ShellScriptLauncher for more information."
+msgstr "Menüdatei ist leer oder hat das falsche Format. Besuchen sie auch https://github.com/wastis/ShellScriptLauncher für weitere Informationen."
+
+
+msgctxt "#32110"
+msgid "Command Error."
+msgstr "Befehlsfehler."
+
+msgctxt "#32111"
+msgid "Error executing command: %s"
+msgstr "Fehler beim Ausführen des Befehls: %s"
+
+msgctxt "#32112"
+msgid "Execution completed."
+msgstr "Ausführung abgeschlossen."
+
+msgctxt "#32113"
+msgid "%s did not return the expected value. Error code: %s"
+msgstr "%s hat nicht den erwarteten Wert zurückgeliefert. Fehlerwert: %s"

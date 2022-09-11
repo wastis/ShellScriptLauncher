@@ -12,3 +12,44 @@ msgstr "General"
 msgctxt "#32006"
 msgid "menu file"
 msgstr "menu file"
+
+msgctxt "#32100"
+msgid "Menu File Error"
+msgstr "Menu File Error"
+
+msgctxt "#32101"
+msgid "Menu file not found. Please select a file in the addon settings. Please visit https://github.com/wastis/ShellScriptLauncher for more information."
+msgstr "Menu file not found. Please select a file in the addon settings. Please visit https://github.com/wastis/ShellScriptLauncher for more information."
+
+msgctxt "#32102"
+msgid "Menu file is a directory. Please select a file in the addon settings. Please visit https://github.com/wastis/ShellScriptLauncher for more information."
+msgstr "Menu file is a directory. Please select a file in the addon settings. Please visit https://github.com/wastis/ShellScriptLauncher for more information."
+
+msgctxt "#32103"
+msgid "Cannot access menu file, permission problem."
+msgstr "Cannot access menu file, permission problem."
+
+msgctxt "#32104"
+msgid "Please see Kodi log for more information."
+msgstr "Please see Kodi log for more information."
+
+msgctxt "#32105"
+msgid "Menu file is empty or might not have the correct format. Please visit https://github.com/wastis/ShellScriptLauncher for more information."
+msgstr "Menu file is empty or might not have the correct format. Please visit https://github.com/wastis/ShellScriptLauncher for more information."
+
+
+msgctxt "#32110"
+msgid "Command Error."
+msgstr "Command Error."
+
+msgctxt "#32111"
+msgid "Error executing command: %s"
+msgstr "Error executing command: %s"
+
+msgctxt "#32112"
+msgid "Execution completed."
+msgstr "Execution completed."
+
+msgctxt "#32113"
+msgid "%s did not return the expected value. Error code: %s"
+msgstr "%s did not return the expected value. Error code: %s"
