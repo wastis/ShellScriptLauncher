@@ -12,7 +12,7 @@
 import xbmcgui
 import xbmcaddon
 from xbmcgui import ListItem
-
+from log import log
 addon = xbmcaddon.Addon()
 def tr(lid):
 	return addon.getLocalizedString(lid)
@@ -72,7 +72,7 @@ class MenuGui(  xbmcgui.WindowXMLDialog  ):
 		self.close()
 
 	def onAction( self, action ):
-		#log("action id %s" % action.getId())
+		log("action id %s" % action.getId())
 
 		#OK pressed
 		if action.getId() in [7, 100]:

@@ -2,7 +2,7 @@
 
 Kodi addon to execute shell scripts or commands. It displays a menu to select the script that shall be executed. The menu is defined in a text file, that is ":" separated (see example.menu). The menu file can be selected in the addon settings.
 
-[Version 1.0.0](https://github.com/wastis/LinuxAddonRepo)
+[Version 1.0.1](https://github.com/wastis/LinuxAddonRepo)
 
 <img src="resources/media/icon.png" alt="drawing" width="200"/> 
 
@@ -24,6 +24,12 @@ The flags are comma separated. Currently there are two flags defined
 	Backup keymaps::/bin/tar -czf ~/kodi_keymaps.tgz ~/.kodi/userdata/keymaps
 	Backup userdata	::/bin/tar -czf ~/kodi_userdata.tgz ~/.kodi/userdata
 	Ping Server:notify,exitcode 0:ping -c 1 192.168.1.1
+
+
+## Assign Remote Key to Menu Entry
+The scripts can be launched with a single keystroke. To execute menu entry 1, add following command to your keyboard.xml.
+
+	RunScript(script.shellscript.launcher,1)
 
 
 2022 wastis

@@ -10,6 +10,7 @@
 #
 
 import os
+import sys
 import subprocess
 
 import xbmcaddon
@@ -94,19 +95,29 @@ def run_addon():
 			return
 
 		#
-		# show menu dialog
+		# check if parameter was given
 		#
 
-		current_skin = xbmc.getSkinDir()
-
-		if os.path.exists(os.path.join(cwd,"resources","skins",current_skin)):
-			skin = current_skin
+		if len(sys.argv)>1:
+			selected = int(sys.argv[1])
+			if selected >= len(menu_items):
+				log("no script for %d" % selected)
+				return
 		else:
-			skin = "Default"
+			#
+			# show menu dialog
+			#
 
-		ui = MenuGui("menu.xml", cwd, skin, "1080i", menu = menu_items, width = 400)
-		ui.doModal()
-		selected = ui.selected
+			current_skin = xbmc.getSkinDir()
+
+			if os.path.exists(os.path.join(cwd,"resources","skins",current_skin)):
+				skin = current_skin
+			else:
+				skin = "Default"
+
+			ui = MenuGui("menu.xml", cwd, skin, "1080i", menu = menu_items, width = 400)
+			ui.doModal()
+			selected = ui.selected
 
 		#
 		# check if back has been pressed
