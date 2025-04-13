@@ -1,6 +1,5 @@
 <?xml version="1.0" ?>
 <window>
-	<defaultcontrol always="true">2000</defaultcontrol>
 	<animation type="WindowOpen" reversible="false">
 		<effect type="slide" start="0,AnimationsSlideMinus" end="0,0" time="AnimationsSlideTime" tween="quadratic" easing="out"/>
 		<effect type="fade" start="0" end="100" time="AnimationsFadeTime"/>

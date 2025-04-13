@@ -55,3 +55,7 @@ msgstr "Ausführung abgeschlossen."
 msgctxt "#32113"
 msgid "%s did not return the expected value. Error code: %s"
 msgstr "%s hat nicht den erwarteten Wert zurückgeliefert. Fehlerwert: %s"
+
+msgctxt "#32114"
+msgid "No Items Found"
+msgstr "Es wurden keine Elemente gefunden."

@@ -53,3 +53,7 @@ msgstr "Execution completed."
 msgctxt "#32113"
 msgid "%s did not return the expected value. Error code: %s"
 msgstr "%s did not return the expected value. Error code: %s"
+
+msgctxt "#32114"
+msgid "No Items Found"
+msgstr "No Items Found"

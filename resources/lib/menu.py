@@ -1,8 +1,8 @@
 #	This file is part of  Shell Script Launcher for Kodi.
 #
-#	Copyright (C) 2022 wastis    https://github.com/wastis/BluetoothManager
+#	Copyright (C) 2022 / 2025 wastis https://github.com/wastis/ShellScriptLauncher
 #
-#	Bluetooth Manager is free software; you can redistribute it and/or modify
+#	Shell Script Launcher is free software; you can redistribute it and/or modify
 #	it under the terms of the GNU Lesser General Public License as published
 #	by the Free Software Foundation; either version 3 of the License,
 #	or (at your option) any later version.
@@ -54,7 +54,7 @@ class MenuGui(  xbmcgui.WindowXMLDialog  ):
 		self.item_list_bk.setPosition(x-dx,y-dy)
 
 		for menuitem in self.menu:
-			item = ListItem(menuitem[0], "")
+			item = ListItem(menuitem["display"], "")
 			self.item_list.addItem(item)
 
 		self.setFocusId(2000)

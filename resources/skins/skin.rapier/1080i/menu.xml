@@ -1,6 +1,5 @@
 <?xml version="1.0" ?>
 <window>
-	<defaultcontrol always="true">2000</defaultcontrol>
 	<animation type="WindowOpen">
 		<effect type="fade" end="100" time="225"/>
 		<effect type="slide" start="0,-15" time="300" tween="cubic" easing="out"/>

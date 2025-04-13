@@ -1,6 +1,5 @@
 <?xml version="1.0" ?>
 <window>
-	<defaultcontrol always="true">2000</defaultcontrol>
 	<animation effect="fade" time="200">WindowOpen</animation>
 	<animation effect="fade" time="200">WindowClose</animation>
 	<coordinates>

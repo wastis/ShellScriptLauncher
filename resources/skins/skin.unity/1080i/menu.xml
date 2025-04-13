@@ -1,6 +1,5 @@
 <?xml version="1.0" ?>
 <window>
-	<defaultcontrol always="true">2000</defaultcontrol>
 	<animation effect="slide" start="1925,0" end="0,0" time="400" tween="quadratic" easing="out">WindowOpen</animation>
 	<animation effect="slide" start="0,0" end="-1925,0" time="400" tween="quadratic" easing="out">WindowClose</animation>
 	<coordinates>

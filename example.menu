@@ -1,4 +1,67 @@
+# Kodi Shell Script Launcher - Menu Example File
+#
+# Each line defines a menu item or structure with 3 parts, separated by colons (:)
+# Format: Display Name : Flags : Command
+#
+# Display Name -> Label shown in the Kodi menu
+# Flags        -> Control behavior (see below)
+# Command      -> The shell command or script to run
+#
+# Flags:
+# submenu      -> Start of a static submenu group
+# subend       -> End of the submenu group
+# scriptmenu   -> Command outputs dynamic menu entries; run again with selection
+# notify       -> Show a Kodi notification when the script finishes
+# show         -> Show script output in Kodi after it finishes
+# exitcode N   -> Treat success/failure based on script exit code N (0=success)
+#
+# Notes:
+# - Indent submenu entries for readability (optional)
+# - Submenus can be nested
+# - Lines starting with "#" are comments
+
+# Static Submenu: Ping options
+< ping a server >:submenu:
+    Ping Server 1:exitcode 0:ping -c 1 192.168.1.1
+    Ping 8.8.8.8:notify, exitcode 0:ping -c 1 8.8.8.8
+< ping a server >:subend:
+
+# Static Submenu: Wake-on-LAN options
+- wake a server -:submenu:
+    wake server video::/usr/bin/wakeonlan 94:de:80:a1:c3:5c
+    wake server data::/usr/bin/wakeonlan 8C:89:A5:57:88:FC
+- wake a server -:subend:
+
+<< Dynamic Menus >>:submenu:
+
+	# Scriptmenu Example: Simple script demonstrating dynamic item generation
+	# The dummy.sh script just prints a few static lines to stdout.
+	# 'show' flag will display output of the *second* run (after selection).
+	< dummy >:scriptmenu,show:~/.kodi/addons/script.shellscript.launcher/resources/bash/dummy.sh
+
+	# Static Submenu: Misc tools containing more dynamic menus
+	< maybe usefull >:submenu:
+		# Dynamic menu: List Easyeffects presets
+		# easyeffects.sh lists presets; selecting one applies it (second run).
+		switch easyeffects profile:scriptmenu:~/.kodi/addons/script.shellscript.launcher/resources/bash/easyeffects.sh
+
+		# Dynamic menu: List USB drives to disconnect
+		# usbdisk.sh lists mount points; selecting one attempts unmount (second run).
+		unmount usb disk:scriptmenu:~/.kodi/addons/script.shellscript.launcher/resources/bash/usbdisk.sh
+		
+		# Scriptmenu Example: List WLANs dynamically
+		# wlan.sh outputs available network names. Selecting one might try to connect.
+		# notify flag shows notification after connection attempt (second run).
+		# exitcode 0 checks if connection attempt (second run) was successful.
+		wlan networks (please be patient):scriptmenu,notify,exitcode 0:~/.kodi/addons/script.shellscript.launcher/resources/bash/wlan.sh
+		
+	< maybe usefull >:subend:
+<< Dynamic Menus >>:subend:
+
+# Standard Command Examples: Run backup commands
+# - notify flag shows a message when done
 Backup addon data:notify:/bin/tar -czf ~/kodi_addon_data.tgz ~/.kodi/userdata/addon_data
+
+# Silent backup (no flags)
 Backup keymaps::/bin/tar -czf ~/kodi_keymaps.tgz ~/.kodi/userdata/keymaps
-Backup userdata	::/bin/tar -czf ~/kodi_userdata.tgz ~/.kodi/userdata
-Ping Server:notify,exitcode 0:ping -c 1 192.168.1.1
+Backup userdata::/bin/tar -czf ~/kodi_userdata.tgz ~/.kodi/userdata
